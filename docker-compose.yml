@@ -7,10 +7,10 @@ services:
     command: hbbs -r 223.130.146.32:21116
     restart: unless-stopped
     ports:
-      - "31115:21115"         # Changed external port
-      - "31116:21116"         # Changed external port
-      - "31116:21116/udp"     # Changed external port
-      - "31117:21117"         # Changed external port
+      - "21115:21115"         # Changed external port
+      - "21116:21116"         # Changed external port
+      - "21116:21116/udp"     # Changed external port
+      - "21117:21117"         # Changed external port
     volumes:
       - rustdesk-data:/root
 
@@ -26,3 +26,4 @@ services:
 
 volumes:
   rustdesk-data:
+
