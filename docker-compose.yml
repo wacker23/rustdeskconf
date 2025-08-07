@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  hbbs:
+    image: rustdesk/rustdesk-server:latest
+    container_name: rustdesk-hbbs
+    command: hbbs -r 223.130.146.32
+    restart: unless-stopped
+    ports:
+      - "21115:21115"         # Rendezvous TCP
+      - "21116:21116"         # Relay TCP
+      - "21116:21116/udp"     # Relay UDP
+      - "21117:21117"         # NAT type check
+    volumes:
+      - rustdesk-data:/root
+
+  hbbr:
+    image: rustdesk/rustdesk-server:latest
+    container_name: rustdesk-hbbr
+    command: hbbr
+    restart: unless-stopped
+    ports:
+      - "21118:21118"         # API (optional)
+    volumes:
+      - rustdesk-data:/root
+
+volumes:
+  rustdesk-data:
